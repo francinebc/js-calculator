@@ -1,14 +1,55 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
 .container {
-    border: 2px solid black;
-    background-color: purple;
+  border: 2px solid white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30rem;
+  border-radius: 6px;
+  font-family: 'Roboto Mono', monospace;
+}
 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 30rem;
-  }
+.number {
+  background-color: #34495e;
+}
 
-  button {
-    padding: 20px;
-  }
+.operator {
+  background-color: #2c3e50;
+}
+
+.displayView {
+  padding: 20px;
+  font-size: 45px; 
+  font-weight: 600;
+  height: 70px;
+  text-align: right;
+  background-color: #7f8c8d;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+button {
+  padding: 20px;
+  color: white;
+  font-weight: 600;
+  font-size: 20px;    
+  border: transparent;
+}
+
+#ac {
+  background-color: #e74c3c;    
+}
+
+#equals {
+  position: absolute;
+  height: 136px;
+  bottom: 0;
+  background-color: #2ecc71;
+}
+
+#decimal {
+    background-color: #34495e;
+}

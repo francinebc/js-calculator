@@ -1,52 +1,58 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Calculator</title>
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/calculator.css">
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/calculator.css" />
     <script src="calculator.js"></script>
   </head>
   <body>
     <div class="container">
-        
-    <div class="row">
-            <input class="col-md-12 displayView" type="text" value="0"/>
-        </div>
+      <div class="row">
+        <input class="col-md-12 displayView" type="text" value="0" />
+      </div>
       <div class="buttons">
         <div class="row">
           <button id="ac" class="col-md-6" value="AC" type="button">AC</button>
-          <button id="divide" class="col-md-3" value="/" type="button">/</button>
-          <button id="multiply" class="col-md-3" value="x" type="button">x</button>
-      	</div>
-        <div class="row">
-          <button id="seven" class="col-md-3" value="7" type="button">7</button>
-          <button id="eight" class="col-md-3" value="8" type="button">8</button>
-          <button id="nine" class="col-md-3" value="9" type="button">9</button>
-          <button id="subtract" class="col-md-3" value="-" type="button">-</button>
-          </div>
-        <div class="row">
-          <button id="four" class="col-md-3" value="4" type="button">4</button>
-          <button id="five" class="col-md-3" value="5" type="button">5</button>
-          <button id="six" class="col-md-3" value="6" type="button">6</button>
-          <button id="add" class="col-md-3" value="+" type="button">+</button>
-          </div>
-        <div class="row">
-          <button id="one" class="col-md-3" value="1" type="button">1</button>
-          <button id="two" class="col-md-3" value="2" type="button">2</button>
-          <button id="three" class="col-md-3" value="3" type="button">3</button>
-        	<button id="equals" class="col-md-3" value="=" type="button">=</button>
+          <button id="divide" class="col-md-3 operator" value="/" type="button">
+            /
+          </button>
+          <button id="multiply" class="col-md-3 operator" value="x" type="button">
+            x
+          </button>
         </div>
         <div class="row">
-          <button id="zero" class="col-md-6" value="0" type="button">0</button>
-          <button id="decimal" class="col-md-3" value="." type="button">.</button>
+          <button id="seven" class="col-md-3 number" value="7" type="button">7</button>
+          <button id="eight" class="col-md-3 number" value="8" type="button">8</button>
+          <button id="nine" class="col-md-3 number" value="9" type="button">9</button>
+          <button id="subtract" class="col-md-3  operator" value="-" type="button">
+            -
+          </button>
         </div>
-      </div>        
+        <div class="row">
+          <button id="four" class="col-md-3 number" value="4" type="button">4</button>
+          <button id="five" class="col-md-3 number" value="5" type="button">5</button>
+          <button id="six" class="col-md-3 number" value="6" type="button">6</button>
+          <button id="add" class="col-md-3  operator" value="+" type="button">+</button>
+        </div>
+        <div class="row">
+          <button id="one" class="col-md-3 number" value="1" type="button">1</button>
+          <button id="two" class="col-md-3 number" value="2" type="button">2</button>
+          <button id="three" class="col-md-3 number" value="3" type="button">3</button>
+        </div>
+        <div class="row">
+          <button id="zero" class="col-md-6 number" value="0" type="button">0</button>
+          <button id="decimal" class="col-md-3 " value="." type="button">
+            .
+          </button>
+          <button id="equals" class="col-md-3  operator" value="=" type="button">
+            =
+          </button>
+        </div>
+      </div>
     </div>
   </body>
 </html>
-
-
-    
