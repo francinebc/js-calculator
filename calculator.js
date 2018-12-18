@@ -26,7 +26,7 @@ function btnClick(event) {
     }
 
     if(target.classList[1] === 'clear') {
-        console.log('clear')
+        clearDisplay()
     }
 
     if(target.classList[1] === 'decimal'){
@@ -41,16 +41,18 @@ function addNumbers(number) {
 }
 
 function addOperator(operator){
+    if(state.factors[state.factors.length -1][1] === 'operator') return;
     state.factors.push([operator, 'operator'])
 }
 
 function addDecimal(decimal) {
+    if(state.factors[state.factors.length -1][1] === 'decimal') return;
     state.factors.push([decimal, 'decimal'])
 }
 
 function evalulate() {
-    
-    state.factors = [[eval(toString()), 'number' ]]
+    state.factors = [[eval(toString()), 'number' ]]    
+    state.evaluated = true
 }
 
 function toString() {
@@ -60,6 +62,11 @@ function toString() {
         string += val
     });
     return string;
+}
+
+function clearDisplay(){
+    state.factors = [[ '0', 'number' ]]
+    state.evaluated = false
 }
 
 function display() {
