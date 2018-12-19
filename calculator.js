@@ -42,7 +42,6 @@ function btnClick(event) {
     }
 
     if(state.factors.length>maxLength){state.factors.pop()}
-    console.log(state)
     display()
 }
 
@@ -73,27 +72,35 @@ function addDecimal(decimal) {
 
 function evalulate() {
     if(state.factors[state.factors.length -1][1] === 'operator') return
-    let equa = toString(true)
-    //let evaled = eval(equa)
-    state.factors = [[calculate(equa), 'number' ]]    
+    let arr = toCleanArray()
+    state.factors = [[calculate(arr), 'number' ]]    
     state.evaluated = true
 }
 
-function toString(mathmatical) {
+function toString() {
     let string = ''
     for(let i = 0; i < state.factors.length; i++) {
-        let val = state.factors[i]
-        if(i>0){
-            let lastVal = state.factors[i-1]
-            if(mathmatical && !((val[1]==='number' || val[1]==='decimal') && 
-            (lastVal[1]==='number' || lastVal[1]==='decimal'))){
-                console.log('ssss')
-                string += ' '
-            }
-        }
-        string += val[0];
+        string += state.factors[i][0]
     }
     return string;
+}
+
+function toCleanArray(){
+    const { factors } = state
+    let arr = factors[0][0]
+    for(let i = 1; i < factors.length; i++) {
+        if(!jointNumbers(factors[i][1], factors[i-1][1])) arr += ' ';
+        arr += factors[i][0];
+    }
+    arr = arr.split(" ")
+    return arr;
+}
+
+/**
+ * This function takes two params and returns true if they are both numbers or decimals
+ */
+function jointNumbers(a, b){
+    return (a==='number' || a==='decimal') && (b==='number' || b==='decimal')
 }
 
 function clearDisplay(){
@@ -102,37 +109,31 @@ function clearDisplay(){
 }
 
 function display() {
-    displayValue.value = toString(false)
+    displayValue.value = toString()
 }
 
-function calculate(math) {
-    console.log(math)
-    //debugger;
-    let arr = math.split(" ")
-    let result = 0;
-    for(let i = 0;i < arr.length; i++) {
-        if(arr[i] === 'x') {
-            result = Number(arr[i - 1]) * Number(arr[i + 1])
-            arr.splice(i - 1, 3, result)
-            i--
-        }
-        if(arr[i] === '/') {
-            result = Number(arr[i - 1]) / Number(arr[i + 1])
-            arr.splice(i - 1, 3, result)
+function calculate(arr) {
+    for(let i = 0; i < arr.length; i++) {
+        if(arr[i] === 'x' || arr[i] === '/'){
+            arr.splice(i - 1, 3, performOp(arr[i - 1], arr[i + 1], arr[i]))
             i--
         }
     }
-    for(let i = 0;i < arr.length; i++) {
-        if(arr[i] === '+') {
-            result = Number(arr[i - 1]) + Number(arr[i + 1])
-            arr.splice(i - 1, 3, result)
-            i--
-        }
-        if(arr[i] === '-') {
-            result = Number(arr[i - 1]) - Number(arr[i + 1])
-            arr.splice(i - 1, 3, result)
+    for(let i = 0; i < arr.length; i++) {
+        if(arr[i] === '+' || arr[i] === '-'){
+            arr.splice(i - 1, 3, performOp(arr[i - 1], arr[i + 1], arr[i]))
             i--
         }
     }
+
     return arr.join("").trim()
+}
+
+function performOp(a, b, op){
+    a = Number(a)
+    b = Number(b)
+    if (op === 'x') return a*b
+    if (op === '/') return a/b
+    if (op === '-') return a-b
+    if (op === '+') return a+b
 }
