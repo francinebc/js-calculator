@@ -74,18 +74,25 @@ function addDecimal(decimal) {
 function evalulate() {
     if(state.factors[state.factors.length -1][1] === 'operator') return
     let equa = toString(true)
-    let evaled = eval(equa)
-    state.factors = [[evaled, 'number' ]]    
+    //let evaled = eval(equa)
+    state.factors = [[calculate(equa), 'number' ]]    
     state.evaluated = true
 }
 
 function toString(mathmatical) {
-    let string = '';
-    state.factors.forEach(value => {
-        let val = value[0] 
-        if(val==='*' && !mathmatical) val='x';
-        string += val
-    });
+    let string = ''
+    for(let i = 0; i < state.factors.length; i++) {
+        let val = state.factors[i]
+        if(i>0){
+            let lastVal = state.factors[i-1]
+            if(mathmatical && !((val[1]==='number' || val[1]==='decimal') && 
+            (lastVal[1]==='number' || lastVal[1]==='decimal'))){
+                console.log('ssss')
+                string += ' '
+            }
+        }
+        string += val[0];
+    }
     return string;
 }
 
@@ -98,5 +105,34 @@ function display() {
     displayValue.value = toString(false)
 }
 
-
-
+function calculate(math) {
+    console.log(math)
+    //debugger;
+    let arr = math.split(" ")
+    let result = 0;
+    for(let i = 0;i < arr.length; i++) {
+        if(arr[i] === 'x') {
+            result = Number(arr[i - 1]) * Number(arr[i + 1])
+            arr.splice(i - 1, 3, result)
+            i--
+        }
+        if(arr[i] === '/') {
+            result = Number(arr[i - 1]) / Number(arr[i + 1])
+            arr.splice(i - 1, 3, result)
+            i--
+        }
+    }
+    for(let i = 0;i < arr.length; i++) {
+        if(arr[i] === '+') {
+            result = Number(arr[i - 1]) + Number(arr[i + 1])
+            arr.splice(i - 1, 3, result)
+            i--
+        }
+        if(arr[i] === '-') {
+            result = Number(arr[i - 1]) - Number(arr[i + 1])
+            arr.splice(i - 1, 3, result)
+            i--
+        }
+    }
+    return arr.join("").trim()
+}
