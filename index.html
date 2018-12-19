@@ -7,7 +7,7 @@
     <title>Calculator</title>
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/calculator.css" />
-    <script src="calculator.js"></script>
+    
   </head>
   <body>
     <div class="container">
@@ -16,7 +16,7 @@
       </div>
       <div class="buttons">
         <div class="row">
-          <button id="ac" class="col-md-6" value="AC" type="button">AC</button>
+          <button id="ac" class="col-md-6 clear" value="AC" type="button">AC</button>
           <button id="divide" class="col-md-3 operator" value="/" type="button">
             /
           </button>
@@ -45,14 +45,16 @@
         </div>
         <div class="row">
           <button id="zero" class="col-md-6 number" value="0" type="button">0</button>
-          <button id="decimal" class="col-md-3 " value="." type="button">
+          <button id="decimal" class="col-md-3 decimal" value="." type="button">
             .
           </button>
-          <button id="equals" class="col-md-3  operator" value="=" type="button">
+          <button id="equals" class="col-md-3 equals" value="=" type="button">
             =
           </button>
         </div>
       </div>
     </div>
+
+    <script src="calculator.js"></script>
   </body>
 </html>
